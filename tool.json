@@ -1,16 +1,47 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "lakeprofiles",
+  "title": "Lake Profiles",
+  "description": "Compare dissolved oxygen and temperature at measured depths on different Halifax lake visits.",
+  "category": "places",
+  "tags": [
+    "halifax",
+    "lakes",
+    "water",
+    "environment"
+  ],
+  "icon": "map",
+  "url": "/lakeprofiles/",
+  "source": "https://github.com/jsdyer/lakeprofiles",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "Municipal LakeWatchers depth readings for Dartmouth’s Banook and Albro monitoring stations.",
+    "cadence": "Weekly",
+    "probes": [
+      {
+        "label": "Municipal profiles retrieved",
+        "url": "https://coolcode.ca/lakeprofiles/data/profiles.json",
+        "path": [
+          "retrieved"
+        ],
+        "count_at": {
+          "path": [
+            "count"
+          ],
+          "unit": "readings"
+        }
+      },
+      {
+        "label": "Sample dates",
+        "url": "https://coolcode.ca/lakeprofiles/data/profiles.json",
+        "path": [
+          "start"
+        ],
+        "end_path": [
+          "end"
+        ]
+      }
+    ]
   }
 }

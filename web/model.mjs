@@ -1,7 +1,6 @@
-// Keep transformations separate from the DOM so they can be tested directly.
-export function cleanLines(text) {
-  if (typeof text !== 'string') throw new TypeError('Expected text');
-  const lines = text.split(/\r\n|\r|\n/).map(line => line.trim()).filter(Boolean);
-  const unique = [...new Set(lines)];
-  return { text: unique.join('\n'), count: unique.length, removed: lines.length - unique.length };
+export const fields={oxygen:{name:'Dissolved oxygen',unit:'mg/L',index:2},temperature:{name:'Temperature',unit:'°C',index:3}};
+export const visitDates=values=>[...new Set(values.map(v=>v[0]))].sort();
+export function atDepth(rows,day,depth,index){
+  return rows.filter(r=>r[0]===day && r[1]===depth && Number.isFinite(r[index])).map(r=>r[index]);
 }
+export const format=x=>x.toLocaleString('en-CA',{maximumFractionDigits:2});
