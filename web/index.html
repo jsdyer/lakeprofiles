@@ -1,1 +1,100 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{TITLE}} · CoolCode</title><meta name="description" content="{{DESCRIPTION}}"><link rel="canonical" href="https://coolcode.ca/{{TOOL_ID}}/"><link rel="stylesheet" href="./style.css"><script type="module" src="./app.mjs"></script></head><body><header><a href="https://coolcode.ca/">CoolCode</a><a href="{{SOURCE_URL}}">Source &amp; README</a></header><main><div class="intro"><h1>{{TITLE}}</h1><p>Compare spring and summer at the same depth in Lake Banook or Albro Lake. Choose two visits to see where oxygen and temperature changed.</p><p class="meta" id="meta" role="status">Loading the municipal records…</p></div><section id="work" hidden><div class="controls"><label>Monitoring station<select id="station"></select></label><label>Measurement<select id="metric"></select></label><label>First visit<select id="earlier"></select></label><label>Second visit<select id="later"></select></label><label>Compare at depth<select id="depth"></select></label></div><div id="stats" class="cards" aria-live="polite"></div><section class="panel"><h2>Down the water column</h2><p id="legend"></p><div id="chart"></div></section><section class="panel"><details><summary>Readings and instruments</summary><div class="scroll"><table><thead><tr><th>Visit</th><th>Depth (m)</th><th>Oxygen (mg/L)</th><th>Temperature (°C)</th><th>Instrument</th></tr></thead><tbody id="rows"></tbody></table></div></details><p><button id="csv">Download both profiles</button></p></section></section><section class="panel"><details><summary>Sources and interpretation</summary><p>Data from the <a href="https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/LakeWatchers_OD_View/FeatureServer/43">HRM LakeWatchers monitoring results</a> and station layer. This edition covers the Banook and Albro deep-water stations in Dartmouth. Depths are shown as metres below the surface. Every marker is a recorded reading at one depth on one visit. A blank represents an unreported measurement. Repeated readings remain visible in the table. These profiles describe sampled water at the station. They do not establish swimming conditions.</p><p>Compare editions and coverage in <a href="https://doi.org/10.25976/85pw-zj92">HRM LakeWatchers on DataStream</a>. The snapshot uses the municipal ArcGIS source and can cover different dates. <a href="https://data-hrm.hub.arcgis.com/pages/open-data-licence">HRM Open Data Licence</a>.</p></details></section></main><footer>Halifax Regional Municipality open data · An independent CoolCode tool</footer></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{TITLE}} · CoolCode</title>
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <link rel="canonical" href="https://coolcode.ca/{{TOOL_ID}}/" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <header>
+      <a href="https://coolcode.ca/">CoolCode</a
+      ><a href="{{SOURCE_URL}}">Source &amp; README</a>
+    </header>
+    <main>
+      <div class="intro">
+        <h1>{{TITLE}}</h1>
+        <p>
+          Compare spring and summer at the same depth in Lake Banook or Albro
+          Lake. Choose two visits to see where oxygen and temperature changed.
+        </p>
+        <p class="meta" id="meta" role="status">
+          Loading the municipal records…
+        </p>
+      </div>
+      <section id="work" hidden>
+        <div class="controls">
+          <label>Monitoring station<select id="station"></select></label
+          ><label>Measurement<select id="metric"></select></label
+          ><label>First visit<select id="earlier"></select></label
+          ><label>Second visit<select id="later"></select></label
+          ><label>Compare at depth<select id="depth"></select></label>
+        </div>
+        <div id="stats" class="cards" aria-live="polite"></div>
+        <section class="panel">
+          <h2>Down the water column</h2>
+          <p id="legend"></p>
+          <div id="chart"></div>
+        </section>
+        <section class="panel">
+          <details>
+            <summary>Readings and instruments</summary>
+            <div class="scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Visit</th>
+                    <th>Depth (m)</th>
+                    <th>Oxygen (mg/L)</th>
+                    <th>Temperature (°C)</th>
+                    <th>Instrument</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
+            </div>
+          </details>
+          <p>
+            <button id="csv">Download both profiles</button> ·
+            <a id="permalink">Link to this comparison</a>
+          </p>
+        </section>
+      </section>
+      <section class="panel">
+        <details>
+          <summary>Sources and interpretation</summary>
+          <p>
+            Data from the
+            <a
+              href="https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/LakeWatchers_OD_View/FeatureServer/43"
+              >HRM LakeWatchers monitoring results</a
+            >
+            and station layer. This edition covers the Banook and Albro
+            deep-water stations in Dartmouth. Depths are shown as metres below
+            the surface. Every marker is a recorded reading at one depth on one
+            visit. A blank represents an unreported measurement. Repeated
+            readings remain visible in the table. These profiles describe
+            sampled water at the station. They do not establish swimming
+            conditions.
+          </p>
+          <p>
+            Compare editions and coverage in
+            <a href="https://doi.org/10.25976/85pw-zj92"
+              >HRM LakeWatchers on DataStream</a
+            >. The snapshot uses the municipal ArcGIS source and can cover
+            different dates.
+            <a href="https://data-hrm.hub.arcgis.com/pages/open-data-licence"
+              >HRM Open Data Licence</a
+            >.
+          </p>
+        </details>
+      </section>
+    </main>
+    <footer>
+      Halifax Regional Municipality open data · An independent CoolCode tool
+    </footer>
+  </body>
+</html>
