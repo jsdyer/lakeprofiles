@@ -1,6 +1,6 @@
 # Lake Profiles
 
-[Open Lake Profiles](https://coolcode.ca/lakeprofiles/). Compare real depth profiles for two Dartmouth lakes.
+[Open Lake Profiles](https://coolcode.ca/lakeprofiles/). Compare real depth profiles across Halifax Regional Municipality.
 
 <!-- coolcode:guide -->
 Choose Lake Banook, compare April 18 and August 14, 2023 at 10 metres, and switch between oxygen and temperature. The plot and table include only measured depths.
@@ -10,7 +10,7 @@ Every selection has a permanent link that restores both visits, the station, the
 
 ## Sources and interpretation
 
-<p>Data from the <a href="https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/LakeWatchers_OD_View/FeatureServer/43">HRM LakeWatchers monitoring results</a> and station layer. This edition covers the Banook and Albro deep-water stations in Dartmouth. Depths are shown as metres below the surface. Every marker is a recorded reading at one depth on one visit. A blank represents an unreported measurement. Repeated readings remain visible in the table. These profiles describe sampled water at the station. They do not establish swimming conditions.</p><p>Compare editions and coverage in <a href="https://doi.org/10.25976/85pw-zj92">HRM LakeWatchers on DataStream</a>. The snapshot uses the municipal ArcGIS source and can cover different dates. <a href="https://data-hrm.hub.arcgis.com/pages/open-data-licence">HRM Open Data Licence</a>.</p>
+<p>Data from the <a href="https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/LakeWatchers_OD_View/FeatureServer/43">HRM LakeWatchers monitoring results</a> and station layer. Every municipal deep-water station with measured oxygen or temperature on at least two dates qualifies. The collector reads lake and basin names from the municipality’s station-code dictionary. Depths are shown as metres below the surface. Every marker is a recorded reading at one depth on one visit. A blank represents an unreported measurement. Repeated readings remain visible in the table. These profiles describe sampled water at the station. They do not establish swimming conditions.</p><p>Compare editions and coverage in <a href="https://doi.org/10.25976/85pw-zj92">HRM LakeWatchers on DataStream</a>. The snapshot uses the municipal ArcGIS source and can cover different dates. <a href="https://data-hrm.hub.arcgis.com/pages/open-data-licence">HRM Open Data Licence</a>.</p>
 
 ## Maintaining the tool
 

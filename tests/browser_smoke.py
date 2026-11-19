@@ -36,12 +36,13 @@ def main():
                 page.locator("#work").wait_for()
                 assert "2023-04-18" in page.locator("#stats").inner_text()
                 assert page.locator("#chart circle").count() > 1
-                page.locator("#station").select_option("ALBRO_SD")
+                assert page.locator("#station option").count() > 30
+                page.locator("#station").select_option("CHO_SD")
                 page.locator("#metric").select_option("temperature")
                 assert "°C" in page.locator("#stats").inner_text()
                 page.goto(page.locator("#permalink").get_attribute("href"))
                 page.locator("#work").wait_for()
-                assert page.locator("#station").input_value() == "ALBRO_SD"
+                assert page.locator("#station").input_value() == "CHO_SD"
                 assert page.locator("#metric").input_value() == "temperature"
                 with page.expect_download() as pending:
                     page.locator("#csv").click()

@@ -16,7 +16,7 @@
   "access": "browser",
   "data_info": {
     "mode": "snapshot",
-    "detail": "Municipal LakeWatchers depth readings for Dartmouth’s Banook and Albro monitoring stations.",
+    "detail": "Municipal LakeWatchers measurements cover Halifax-area deep-water stations with repeat sampling visits.",
     "cadence": "Weekly",
     "probes": [
       {

@@ -11,8 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://services2.arcgis.com/11XBiaBYA9Ep0yNJ/arcgis/rest/services/"
 
 
-def query(layer, **params):
-    url = BASE + layer + "/query?" + urlencode({"f": "json", **params})
+def query(layer, metadata=False, **params):
+    url = BASE + layer + ("?" if metadata else "/query?") + urlencode({"f": "json", **params})
     for attempt in range(3):
         try:
             with urlopen(
@@ -30,20 +30,20 @@ def query(layer, **params):
 
 
 def records(layer, where, fields):
-    ids = query(layer, where=where, returnIdsOnly="true")["objectIds"] or []
+    ids = sorted(query(layer, where=where, returnIdsOnly="true")["objectIds"] or [])
     if len(ids) != len(set(ids)):
         raise ValueError("Duplicate published object IDs")
     output = []
-    for start in range(0, len(ids), 120):
-        batch = ids[start : start + 120]
+    for start in range(0, len(ids), 400):
+        batch = ids[start : start + 400]
         data = query(
             layer,
-            objectIds=",".join(map(str, batch)),
-            outFields=fields,
+            where=f"({where}) AND OBJECTID BETWEEN {batch[0]} AND {batch[-1]}",
+            outFields="OBJECTID," + fields,
             returnGeometry="false",
         )
         rows = [x["attributes"] for x in data["features"]]
-        if data.get("exceededTransferLimit") or len(rows) != len(batch):
+        if data.get("exceededTransferLimit") or {r["OBJECTID"] for r in rows} != set(batch) or len(rows) != len(batch):
             raise ValueError("Incomplete ArcGIS result")
         output.extend(rows)
     return output

@@ -41,7 +41,8 @@ function depths() {
         .map((r) => r[1]),
     ),
   ].sort((a, b) => a - b);
-  const target = station().code === "BAN_SD" ? "10" : "6",
+  const shared = available.filter(depth => days.every(day => station().values.some(r => r[0] === day && r[1] === depth)));
+  const target = station().code === "BAN_SD" && available.includes(10) ? "10" : String(shared.includes(6) ? 6 : shared.at(-1) ?? available[0]),
     old = by("depth").value;
   choices(
     "depth",
@@ -197,7 +198,7 @@ try {
   if (!res.ok) throw Error();
   data = await res.json();
   by("meta").textContent =
-    data.count +
+    data.stations.length + " monitoring stations · " + data.count.toLocaleString("en-CA") +
     " readings · " +
     data.start +
     " to " +
