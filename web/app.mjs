@@ -27,7 +27,8 @@ function visits() {
     requested(
       "second",
       days,
-      days.find((x) => x.startsWith("2023-08")) ?? days.at(-1),
+      days.find((x) => x.startsWith("2023-08") && x !== by("earlier").value) ??
+        days.filter((x) => x !== by("earlier").value).at(-1) ?? days[0],
     ),
   );
   depths();
@@ -42,7 +43,7 @@ function depths() {
     ),
   ].sort((a, b) => a - b);
   const shared = available.filter(depth => days.every(day => station().values.some(r => r[0] === day && r[1] === depth)));
-  const target = station().code === "BAN_SD" && available.includes(10) ? "10" : String(shared.includes(6) ? 6 : shared.at(-1) ?? available[0]),
+  const target = station().code === "BAN_SD" && shared.includes(10) ? "10" : String(shared.includes(6) ? 6 : shared.at(-1) ?? available[0]),
     old = by("depth").value;
   choices(
     "depth",
@@ -112,6 +113,7 @@ function chart(records, metric, first, second) {
     [first, "#036a78", "circle"],
     [second, "#a9502f", "square"],
   ]) {
+    if (first === second && shape === "square") continue;
     for (const r of points.filter((r) => r[0] === day)) {
       const x = X(r[metric.index]),
         y = Y(r[1]);
@@ -149,6 +151,11 @@ function render() {
     b = atDepth(s.values, second, depth, m.index);
   const label = (v) =>
     v.length ? v.map(format).join(" / ") + " " + m.unit : "Unavailable";
+  const reading = (values, day) => values.length
+    ? label(values) + " on " + day
+    : "no reading on " + day;
+  const comparison = first === second ? reading(a, first) : reading(a, first) + " and " + reading(b, second);
+  by("finding").textContent = s.name + " · " + m.name + " at " + depth + " m — " + comparison + ".";
   const delta = a.length === 1 && b.length === 1 ? b[0] - a[0] : null;
   cards([
     [first, label(a), m.name + " at " + depth + " m"],
@@ -164,7 +171,7 @@ function render() {
     ],
   ]);
   const rec = s.values.filter((r) => r[0] === first || r[0] === second);
-  by("legend").textContent =
+  by("legend").textContent = first === second ? "Teal circles · " + first :
     "Teal circles · " + first + "   /   Rust squares · " + second;
   chart(rec, m, first, second);
   by("rows").replaceChildren(

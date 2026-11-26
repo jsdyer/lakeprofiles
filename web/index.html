@@ -13,30 +13,28 @@
   <body>
     <header>
       <a href="https://coolcode.ca/">CoolCode</a
-      ><a href="{{SOURCE_URL}}">Source &amp; README</a>
+      ><a href="./stations/">Browse lake profiles</a>
     </header>
     <main>
       <div class="intro">
-        <h1>Halifax lake oxygen and temperature by depth</h1><p>{{TITLE}}</p>
+        <h1>Compare Halifax lake measurements</h1>
         <p>
-          Compare two sampling visits at a Halifax-area lake. Follow oxygen and temperature from the surface to the deepest measured point.
-        </p>
-        <p class="meta" id="meta" role="status">
-          Loading the municipal records…
+          Choose a lake, two sampling dates and a depth to compare dissolved oxygen or water temperature.
         </p>
       </div>
-      <p><a href="./stations/">Browse water profiles by lake and station</a></p>
+      <noscript><p>Open a lake profile for dated measurements, or enable JavaScript to compare visits.</p></noscript>
       <section id="work" hidden>
+        <p id="finding" aria-live="polite"></p>
         <div class="controls">
-          <label>Monitoring station<select id="station"></select></label
+          <label>Lake or station<select id="station"></select></label
           ><label>Measurement<select id="metric"></select></label
           ><label>First visit<select id="earlier"></select></label
           ><label>Second visit<select id="later"></select></label
           ><label>Compare at depth<select id="depth"></select></label>
         </div>
-        <div id="stats" class="cards" aria-live="polite"></div>
+        <div id="stats" class="cards"></div>
         <section class="panel">
-          <h2>Down the water column</h2>
+          <h2>Readings by depth</h2>
           <p id="legend"></p>
           <div id="chart"></div>
         </section>
@@ -64,6 +62,7 @@
           </p>
         </section>
       </section>
+      <p class="meta" id="meta" role="status">Loading the municipal records…</p>
       <section class="panel">
         <details>
           <summary>Sources and interpretation</summary>
@@ -95,6 +94,6 @@
     </main>
     <footer>
       Halifax Regional Municipality open data · An independent CoolCode tool
-     <a href="https://coolcode.ca/report/?tool=lakeprofiles" referrerpolicy="no-referrer">Report an issue</a></footer>
+     · <a href="{{SOURCE_URL}}">{{TITLE}} source &amp; guide</a> · <a href="https://coolcode.ca/report/?tool=lakeprofiles" referrerpolicy="no-referrer">Report an issue</a></footer>
   </body>
 </html>

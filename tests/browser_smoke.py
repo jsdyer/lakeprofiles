@@ -3,6 +3,7 @@
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
+from urllib.parse import urlsplit
 import os
 import shutil
 import tempfile
@@ -53,6 +54,15 @@ def main():
                     "document.documentElement.scrollWidth <= window.innerWidth"
                 )
                 page.screenshot(path=str(screenshots / "mobile.png"), full_page=True)
+                root = f"http://127.0.0.1:{server.server_port}/example-tool/"
+                page.goto(root + "stations/cho-sd/")
+                href = page.locator('a[href*="?station="]').get_attribute("href")
+                page.goto(root + "?" + urlsplit(href).query)
+                page.locator("#work").wait_for()
+                assert page.locator("#station").input_value() == "CHO_SD"
+                assert "Chocolate Lake" in page.locator("#finding").inner_text()
+                assert page.locator("#later").input_value() in page.locator("#finding").inner_text()
+                assert page.locator("#finding").bounding_box()["y"] < 844
                 assert not errors, errors
                 browser.close()
             print(
