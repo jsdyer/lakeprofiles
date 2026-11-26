@@ -6,6 +6,8 @@
 Choose Lake Banook, compare April 18 and August 14, 2023 at 10 metres, and switch between oxygen and temperature. The plot and table include only measured depths.
 <!-- /coolcode:guide -->
 
+[Browse water profiles by lake and station](https://coolcode.ca/lakeprofiles/stations/). The offline Pages build writes a dated HTML result for each qualifying record and lists it in the project sitemap. New records are published with the next successful data build.
+
 Every selection has a permanent link that restores both visits, the station, the metric and the measured depth.
 
 ## Sources and interpretation
